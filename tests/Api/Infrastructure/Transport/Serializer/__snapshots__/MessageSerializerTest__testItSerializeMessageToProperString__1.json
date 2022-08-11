@@ -1,0 +1,11 @@
+{
+    "message": {
+        "__type": "App\\Tests\\Api\\Infrastructure\\Transport\\Serializer\\TestMessageForMessageSerializer",
+        "stringProperty": "testString",
+        "intProperty": 5
+    },
+    "meta": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "occurredAt": "2020-01-01 10:20:30.000000+0000"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "meta": {
+        "id": "21ba13b4-b185-4882-ac6f-d147355987eb",
+        "occurredAt": "2020-01-01 10:20:30.000000+0000"
+    },
+    "message": {
+        "__type": "App\\Bank\\Command\\SendRequestToBank",
+        "messageId": "21ba13b4-b185-4882-ac6f-d147355987eb",
+        "bank": "otp",
+        "blankId": 5,
+        "request": {
+            "url": "https:\/\/otp.ru\/soap\/",
+            "body": "payload",
+            "metadata": {
+                "action": "send"
+            }
+        },
+        "callback": {
+            "url": "http:\/\/callback.url",
+            "returnData": {
+                "additionalField": 555
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autoconfigure: true
+    public: true
+    autowire: true
+
+  App\Infrastructure\Transport\Connection\RabbitConnection:
+    class: App\Tests\_fakes\FakeRabbitConnection
