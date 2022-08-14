@@ -65,7 +65,7 @@ final class ConvertExceptionToResponseOnException implements EventSubscriberInte
     public static function getSubscribedEvents(): iterable
     {
         return [
-            KernelEvents::EXCEPTION => 'setResponseOnException'
+            KernelEvents::EXCEPTION => ['setResponseOnException', -127]
         ];
     }
 }

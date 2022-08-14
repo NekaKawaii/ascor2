@@ -13,4 +13,4 @@ COPY ./docker/php/opcache.prod.ini /usr/local/etc/php/conf.d/docker-php-ext-opca
 COPY ./docker/php/logging.conf /usr/local/etc/php-fpm.d/logging.conf
 
 
-RUN APP_ENV=prod composer i --no-dev --optimize-autoloader --ignore-platform-reqs
+RUN APP_ENV=prod composer i --no-dev --optimize-autoloader --classmap-authoritative

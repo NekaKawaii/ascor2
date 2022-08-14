@@ -7,7 +7,6 @@ namespace App\Tests\Api\Controller;
 use App\Api\Controller\ApiController;
 use App\Tests\_tools\JsonApiRequest;
 use App\Tests\ApiTestCase;
-use Symfony\Component\Uid\Uuid;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
@@ -24,14 +23,14 @@ final class ApiControllerTest extends ApiTestCase
         /** @see ApiController::sendLoadRequestToBank() */
         $this->requestJsonApi(
             JsonApiRequest::post('request/create')
-                ->setHeader('X-Message-Id', '...')
                 ->jsonBody([
+                    "messageId" => "21ba13b4-b185-4882-ac6f-d147355987eb",
                     "bank" => "otp",
                     "blankId" => 5,
                     "request" => [
                         "url" => "https://otp.ru/soap/",
                         "body" => "payload",
-                        "metadata" => ["action" => "sdd"]
+                        "metadata" => ["action" => "send"]
                     ],
                     "callback" => [
                         "url" => "http://callback.url",

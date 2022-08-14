@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  loadgen:
+    image: golang:1.18-alpine
+    volumes:
+      - ./tools/loadgenerator:/go
+    command: ["go", "run", "main.go"]

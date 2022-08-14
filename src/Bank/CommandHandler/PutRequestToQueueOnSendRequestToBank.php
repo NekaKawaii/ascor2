@@ -13,6 +13,7 @@ use App\Infrastructure\Transport\MessageDispatcher;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Serializer\Exception\MissingConstructorArgumentsException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 use function App\uuidv4;
@@ -33,12 +34,11 @@ final class PutRequestToQueueOnSendRequestToBank implements MessageHandlerInterf
     public function __construct(
         MessageDispatcher $dispatcher,
         BankAdapters $banks,
-        DenormalizerInterface $denormalizer,
         ValidatorInterface $validator
     ) {
         $this->dispatcher = $dispatcher;
         $this->banks = $banks;
-        $this->denormalizer = $denormalizer;
+        $this->denormalizer = new PropertyNormalizer();
         $this->validator = $validator;
     }
 

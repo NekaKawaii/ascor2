@@ -6,6 +6,7 @@ namespace App\Bank;
 
 use App\Bank\Adapter\BankAdapter;
 use App\Bank\Adapter\OTP\OtpBankAdapter;
+use App\Infrastructure\Transport\MessageDispatcher;
 
 final class BankAdapters
 {
@@ -16,9 +17,12 @@ final class BankAdapters
      */
     private array $adapters = [];
 
-    public function __construct()
+    public function __construct(MessageDispatcher $dispatcher)
     {
         $this->adapters[OtpBankAdapter::getCode()] = new OtpBankAdapter();
+
+        // TODO: Вынести отсюда
+        $dispatcher->declareQueues($this->getAllCodes());
     }
 
     public function support(string $bankCode): bool
@@ -31,6 +35,9 @@ final class BankAdapters
         return $this->adapters[$bankCode]->getMetadataClass();
     }
 
+    /**
+     * @return array<string>
+     */
     public function getAllCodes(): array
     {
         return \array_keys($this->adapters);

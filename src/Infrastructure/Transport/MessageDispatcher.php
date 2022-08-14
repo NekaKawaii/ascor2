@@ -29,4 +29,12 @@ final class MessageDispatcher
             $this->serializer->encode(RabbitMessage::create(message: $message, id: $id))
         );
     }
+
+    /**
+     * @param array<string> $queueNames
+     */
+    public function declareQueues(array $queueNames): void
+    {
+        $this->transport->declareQueues($queueNames);
+    }
 }
